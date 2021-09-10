@@ -209,9 +209,12 @@ cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어�
 
 ### 4.3 K-means 클러스터링
 
-![3klusters_10.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/3klusters_10.png)
-
-![3klusters_50.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/3klusters_50.png)
+<div style="width:400px; height:250px; float: left;">
+<img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10.png">
+</div>
+<div style="width:400px; height:250px; float: right;">
+<img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10.png">
+</div>
 
 다차원의 그래프를 그려서 보기는 힘들기 때문에, 간략히 2차원 그래프를 통해 군집된 소환사들을 관찰할 수 있었다. 개인적으로 플레이어의 플레이 스타일에 따라 *데스, 챔피언에게 가한 피해량*이 달라질 것이라 생각해 두 데이터를 기준으로 그래프를 그려 군집을 관찰했는데, 육안으로 겹치는 부분이 많아 확연한 구분이 힘들었다. 물론 해당 분석에는 19개의 Feature를 고려했기 때문에, 클러스터링 자체가 실패했다고 보기는 어렵다. 그래프 상에서 클러스터들의 특징을 관찰하긴 어려웠기 때문에, 각 클러스터의 무게중심값을 출력해서 어떤 집단을 대표하는지 분석했다. 해당 분석을 통해 도출된 Centroid의 값은 다음과 같다.
 
