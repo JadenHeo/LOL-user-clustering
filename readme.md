@@ -246,9 +246,8 @@ cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어�
 
 가시적으로 좀 더 명확히 나뉜 클러스터를 관찰하기 위해, 클러스터 별로 크게 차이가 나는 Feature인 *중립 몬스터 처치, 미니언 처치*를 기준으로 다시 2차원 그래프를 그렸다.
 
-![3klusters_10_2.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/3klusters_10_2.png)
-
-![3klusters_50_2.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/3klusters_50_2.png)
+<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_10_2.png" width="600" height="400"/></center>
+<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_50_2.png" width="600" height="400"/></center>
 
 가설에 따라 클러스터가 소환사의 플레이 스타일에 따라 나눠질 것이라 예상했지만, 오히려 소환사가 주로 플레이한 포지션에 따라 클러스터가 나뉘는 것을 확인했다. 생각해 본 가설 검증 실패의 요인은 다음 두 가지다.
 
@@ -257,9 +256,9 @@ cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어�
 
 1번 원인을 살펴보면, 실제 게임을 진행하다 보면 소환사가 게임에 임하는 플레이 스타일이 Feature에 아무런 영향을 주지 않는다는 것은 앞서 진행한 한 번의 분석으로 단정 짓기 어려웠다. 따라서 2번 원인을 주 실패 요인으로 생각하고, 방금 전 클러스터링에 소환사가 플레이한 포지션이 지대한 영향을 주는 것으로 판단했다. 따라서 문제 해결을 위해서는 같은 포지션에 있는 플레이어들끼리 동일한 분석을 진행하기로 했다. 예를 들어 MID 포지션에서 플레이한 결과만을 가지고 소환사들을 분석한다면, 좀 더 개선된 결과를 얻을 수 있을 것이라 생각했다. 가장 빠른 방법으로, 지금 결과로 나온 3개의 클러스터가 이미 어느 정도 포지션들을 나눠주고 있기 때문에, 해당 분석에서 같은 클러스터로 분류된 소환사를 다시 한번 분석해보기로 했다.
 
-![inertia_10_cluster.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/inertia_10_cluster.png)
+<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10_cluster.png" width="600" height="400"/></center>
+<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/2klusters_10_cluster.png" width="600" height="400"/></center>
 
-![2klusters_10_cluster.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/2klusters_10_cluster.png)
 
 inertia 그래프를 살펴보면, 클러스터의 수가 2일 때, 그리고 5일 때 기울기의 변화가 관찰되었다. elbow의 각이 2일 때 두드러졌기 때문에, 2개의 클러스터로 분석을 진행했고, *데스-챔피언 피해량* 그래프에서 위와 같은 결과를 보여줬다. 2개의 Centroid는 다음과 같다.
 
