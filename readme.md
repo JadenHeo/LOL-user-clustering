@@ -203,14 +203,14 @@ $X_{scaled} = \frac{X_{orginal} - X_{min}}{X_{max} - X_{min}}$
 
 적절한 cluster의 수는 inertia 값을 통해 결정할 수 있다. inertia 값은 K-means 모델을 통한 cluster 형성 이후, Centroid까지의 거리를 합산한 값이다. 그러므로 inertia 값이 작을수록 clustering이 잘 되었다고 볼 수 있으며, cluster의 개수 별로 inerita 값을 구해 적절한 cluster 수를 결정한다.
 
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10.png" width="600" height="400"/></center>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10.png" width="600" height="400"/></p>
 
 cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어들겠지만, 과도하게 많아지면 cluster를 나누는 의미 자체가 퇴색되므로 좋지 않다. **inertia 값이 k=2 → 3으로 바뀔 때 급격히 감소**하고, 이후에는 감소 폭이 크지 않은 것을 고려해 **클러스터의 수를 3개로 결정**했다.
 
 ### 4.3 K-means 클러스터링
 
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_10.png" width="600" height="400"/></center>
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_50.png" width="600" height="400"/></center>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_10.png" width="600" height="400"/></p>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_50.png" width="600" height="400"/></p>
 
 다차원의 그래프를 그려서 보기는 힘들기 때문에, 간략히 2차원 그래프를 통해 군집된 소환사들을 관찰할 수 있었다. 개인적으로 플레이어의 플레이 스타일에 따라 *데스, 챔피언에게 가한 피해량*이 달라질 것이라 생각해 두 데이터를 기준으로 그래프를 그려 군집을 관찰했는데, 육안으로 겹치는 부분이 많아 확연한 구분이 힘들었다. 물론 해당 분석에는 19개의 Feature를 고려했기 때문에, 클러스터링 자체가 실패했다고 보기는 어렵다. 그래프 상에서 클러스터들의 특징을 관찰하긴 어려웠기 때문에, 각 클러스터의 무게중심값을 출력해서 어떤 집단을 대표하는지 분석했다. 해당 분석을 통해 도출된 Centroid의 값은 다음과 같다.
 
@@ -246,8 +246,8 @@ cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어�
 
 가시적으로 좀 더 명확히 나뉜 클러스터를 관찰하기 위해, 클러스터 별로 크게 차이가 나는 Feature인 *중립 몬스터 처치, 미니언 처치*를 기준으로 다시 2차원 그래프를 그렸다.
 
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_10_2.png" width="600" height="400"/></center>
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_50_2.png" width="600" height="400"/></center>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_10_2.png" width="600" height="400"/></p>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/3klusters_50_2.png" width="600" height="400"/></p>
 
 가설에 따라 클러스터가 소환사의 플레이 스타일에 따라 나눠질 것이라 예상했지만, 오히려 소환사가 주로 플레이한 포지션에 따라 클러스터가 나뉘는 것을 확인했다. 생각해 본 가설 검증 실패의 요인은 다음 두 가지다.
 
@@ -256,8 +256,8 @@ cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어�
 
 1번 원인을 살펴보면, 실제 게임을 진행하다 보면 소환사가 게임에 임하는 플레이 스타일이 Feature에 아무런 영향을 주지 않는다는 것은 앞서 진행한 한 번의 분석으로 단정 짓기 어려웠다. 따라서 2번 원인을 주 실패 요인으로 생각하고, 방금 전 클러스터링에 소환사가 플레이한 포지션이 지대한 영향을 주는 것으로 판단했다. 따라서 문제 해결을 위해서는 같은 포지션에 있는 플레이어들끼리 동일한 분석을 진행하기로 했다. 예를 들어 MID 포지션에서 플레이한 결과만을 가지고 소환사들을 분석한다면, 좀 더 개선된 결과를 얻을 수 있을 것이라 생각했다. 가장 빠른 방법으로, 지금 결과로 나온 3개의 클러스터가 이미 어느 정도 포지션들을 나눠주고 있기 때문에, 해당 분석에서 같은 클러스터로 분류된 소환사를 다시 한번 분석해보기로 했다.
 
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10_cluster.png" width="600" height="400"/></center>
-<center><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/2klusters_10_cluster.png" width="600" height="400"/></center>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10_cluster.png" width="600" height="400"/></p>
+<p align="center"><img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/2klusters_10_cluster.png" width="600" height="400"/></p>
 
 
 inertia 그래프를 살펴보면, 클러스터의 수가 2일 때, 그리고 5일 때 기울기의 변화가 관찰되었다. elbow의 각이 2일 때 두드러졌기 때문에, 2개의 클러스터로 분석을 진행했고, *데스-챔피언 피해량* 그래프에서 위와 같은 결과를 보여줬다. 2개의 Centroid는 다음과 같다.
