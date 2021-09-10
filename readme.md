@@ -203,7 +203,7 @@ $X_{scaled} = \frac{X_{orginal} - X_{min}}{X_{max} - X_{min}}$
 
 적절한 cluster의 수는 inertia 값을 통해 결정할 수 있다. inertia 값은 K-means 모델을 통한 cluster 형성 이후, Centroid까지의 거리를 합산한 값이다. 그러므로 inertia 값이 작을수록 clustering이 잘 되었다고 볼 수 있으며, cluster의 개수 별로 inerita 값을 구해 적절한 cluster 수를 결정한다.
 
-![inertia_10.png](LOL%20%E1%84%86%E1%85%A2%E1%84%8E%E1%85%B5%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%90%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%205d6671b6ef174a6d8881369ac90e7abc/inertia_10.png)
+<img src="https://github.com/JadenHeo/LOL-user-clustering/blob/main/graph/inertia_10.png" width="600" height="400"/>
 
 cluster의 개수가 많으면 많을수록 inertia의 값은 당연히 줄어들겠지만, 과도하게 많아지면 cluster를 나누는 의미 자체가 퇴색되므로 좋지 않다. **inertia 값이 k=2 → 3으로 바뀔 때 급격히 감소**하고, 이후에는 감소 폭이 크지 않은 것을 고려해 **클러스터의 수를 3개로 결정**했다.
 
