@@ -1,0 +1,5 @@
+{'participants': {'$elemMatch': {'$and': [{'timeline.lane' : 'MIDDLE'}, {'timeline.role' : 'DUO_CARRY'}]}}}
+
+{'participants': {'$not' :{'$elemMatch': {'timeline.lane' : 'NONE'}}}}
+
+{'$and' : [{'participants': {'$not' :{'$elemMatch': {'timeline.lane' : 'NONE'}}}}, {'gameduration':{'$gt':1000}}]}
